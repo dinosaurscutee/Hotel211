@@ -1,0 +1,116 @@
+﻿@model Dictionary<string, decimal>
+
+@{
+    ViewData["Title"] = "Report & Analysis";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report & Analysis</title>
+    <style>
+        /* Căn giữa tiêu đề */
+        h1 {
+            text-align: center;
+        }
+
+        /* CSS cho các phần khác */
+        /* ... */
+    </style>
+</head>
+<body>
+    <h1>Revenue</h1>
+
+    <!-- Thêm dropdownlist để chọn năm -->
+    <form method="get" action="@Url.Action("Index", "ReportingAnalysis")">
+        <label for="year">Select Year:</label>
+        <select id="year" name="year">
+            @for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Select</button>
+    </form>
+
+    <div style="display: flex;">
+        <!-- Thêm cột bên trái -->
+        <div style="flex: 1;">
+            <button type="button" class="btn btn-primary btn-lg btn-block">
+                <a asp-controller="ReportingAnalysis" asp-action="Index" class="text-white">Revenue</a>
+            </button>
+            <br />
+            <br />
+            <button type="button" class="btn btn-primary btn-lg btn-block">
+                <a asp-controller="ReportingAnalysis" asp-action="TopBooking" class="text-white">TopBooking</a>
+            </button>
+        </div>
+
+        <!-- Biểu đồ -->
+        <div style="flex: 3;">
+            @if (Model.Any())
+            {
+                <canvas id="incomeChart" style="height: 400px; width: 800px;"></canvas>
+            }
+            else
+            {
+                <p>No income data available.</p>
+            }
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <table style="border-collapse: collapse; width: 50%; margin: auto;">
+            <tr style="border-bottom: 1px solid #ddd;">
+                <th style="padding: 8px;">Count booking</th>
+                <th style="padding: 8px;">Total income</th>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">@ViewBag.countBook</td>
+                <td style="padding: 8px; border-bottom: 1px solid #ddd;">@ViewBag.SumTotal</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    @section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var ctx = document.getElementById('incomeChart').getContext('2d');
+            var labels = [];
+            var data = [];
+
+            @foreach (var item in Model)
+            {
+                <text>
+                    labels.push('@item.Key');
+                data.push('@item.Value');
+                </text>
+            }
+
+                                var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Income',
+                        data: data,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    }
+</body>
+</html>
