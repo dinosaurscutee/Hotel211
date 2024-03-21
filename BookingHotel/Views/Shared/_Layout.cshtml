@@ -67,6 +67,10 @@
                                     {
                                         <li><a class="dropdown-item" asp-area="" asp-controller="Roles" asp-action="Index">Role manager</a></li>
                                     }
+                                    @if (@ViewContext.HttpContext.Session.GetString("UserRole") == "Admin")
+                                    {
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="ReportingAnalysis" asp-action="Index">Report&Analysis</a></li>
+                                    }
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="@Url.Action("Logout", "Account")">Logout</a></li>
                                 </ul>

@@ -7,6 +7,8 @@ namespace BookingHotel.Models
         public int ScheduleID { get; set; }
 
         public int? EmployeeID { get; set; }
+        public string? Taskname { get; set; }
+        public string? Slot { get; set; }
         public User Employee { get; set; }
 
         [Required]
@@ -14,5 +16,7 @@ namespace BookingHotel.Models
 
         [Required]
         public DateTime ShiftEndTime { get; set; }
+
+
     }
 }

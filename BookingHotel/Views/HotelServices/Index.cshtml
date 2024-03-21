@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BookingHotel.Models.HotelService>
+
+@{
+    ViewData["Title"] = "Service";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Màu nền xám nhạt */
+    }
+
+    .card {
+        border-radius: 15px; /* Bo tròn các góc của card */
+        border: 2px solid #dee2e6; /* Viền màu xám nhạt */
+        transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+        height: 100%; /* Đảm bảo tất cả các card có cùng chiều cao */
+        display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử bên trong */
+        flex-direction: column; /* Xếp các phần tử bên trong theo chiều dọc */
+    }
+
+        .card:hover {
+            transform: translateY(-5px); /* Hiệu ứng nâng card lên khi rê chuột */
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1); /* Hiệu ứng bóng đổ */
+        }
+
+    .card-img-top {
+        border-top-left-radius: 15px; /* Bo tròn góc trên bên trái của hình ảnh */
+        border-top-right-radius: 15px; /* Bo tròn góc trên bên phải của hình ảnh */
+        height: 200px; /* Chiều cao cố định cho hình ảnh */
+        object-fit: cover; /* Ẩn hoặc hiển thị toàn bộ hình ảnh */
+    }
+
+    .card-body {
+        flex-grow: 1; /* Chiều cao linh hoạt để nội dung bên trong mở rộng */
+    }
+
+    .card-title {
+        font-size: 1.2rem; /* Kích thước font chữ cho tiêu đề */
+        color: #333; /* Màu chữ đen */
+    }
+
+    .card-text {
+        font-size: 1rem; /* Kích thước font chữ cho nội dung */
+        color: #666; /* Màu chữ xám */
+    }
+
+    .btn-outline-danger {
+        color: #dc3545; /* Màu chữ cho nút outline danger */
+        border-color: #dc3545; /* Màu viền nút outline danger */
+    }
+
+        .btn-outline-danger:hover {
+            color: #fff; /* Màu chữ khi di chuột qua */
+            background-color: #dc3545; /* Màu nền khi di chuột qua */
+            border-color: #dc3545; /* Màu viền khi di chuột qua */
+        }
+</style>
+
+<h1 class="text-center mt-4 mb-4">All Services</h1>
+
+<div class="container mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <p class="mb-0">
+                <a asp-action="TopRating" class="btn btn-primary">Top Services</a>
+            </p>
+        </div>
+        <div class="col-md-6 text-right">
+            @if (@ViewContext.HttpContext.Session.GetString("UserRole") == "Admin")
+            {
+                <p class="mb-0">
+                    <a asp-action="Create" class="btn btn-primary">Create New</a>
+                </p>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="Service Image">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a asp-action="Details" asp-route-id="@item.ServiceID">@item.ServiceName</a>
+                        </h5>
+                        <p class="card-text">@item.Description</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        @if (@ViewContext.HttpContext.Session.GetString("UserRole") == "Admin")
+                        {
+                            <form asp-action="Delete" asp-route-id="@item.ServiceID" onsubmit="return confirm('Are you sure you want to delete this service?');" style="display: inline;">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">&#10006; Delete</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

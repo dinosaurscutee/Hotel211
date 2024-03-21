@@ -23,6 +23,7 @@ namespace BookingHotel.Models
         public string ThumnailRoom {  get; set; }
 
         public double? Price { get; set; }
+        public string? Description { get; set; }
 
         // Quan hệ Nhiều-Nhiều với Tiện ích Phòng
         public ICollection<RoomRoomAmenities> RoomAmenities { get; set; }

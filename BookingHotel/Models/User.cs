@@ -22,6 +22,11 @@ namespace BookingHotel.Models
         [MaxLength(50)]
         public string LastName { get; set; }
 
+        public string Name
+        {
+            get { return this.FirstName + " " + this.LastName; }
+        }
+
         [Required]
         [MaxLength(255)]
         public string Email { get; set; }

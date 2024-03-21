@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookingHotel.Migrations
 {
-    public partial class Init : Migration
+    public partial class initt : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,10 @@ namespace BookingHotel.Migrations
                     ServiceID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ServiceName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -118,7 +121,8 @@ namespace BookingHotel.Migrations
                     Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ServiceID = table.Column<int>(type: "int", nullable: false),
                     ThumnailRoom = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: true)
+                    Price = table.Column<double>(type: "float", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -144,6 +148,8 @@ namespace BookingHotel.Migrations
                     ScheduleID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeID = table.Column<int>(type: "int", nullable: false),
+                    Taskname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Slot = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShiftStartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShiftEndTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -367,11 +373,12 @@ namespace BookingHotel.Migrations
 
             migrationBuilder.InsertData(
                 table: "HotelServices",
-                columns: new[] { "ServiceID", "Description", "ServiceName" },
+                columns: new[] { "ServiceID", "Description", "ImageUrl", "Price", "Rating", "ServiceName" },
                 values: new object[,]
                 {
-                    { 1, "In-room dining service", "Room Service" },
-                    { 2, "Laundry and dry cleaning service", "Laundry" }
+                    { 1, "In-room dining service", null, null, null, "Room Service" },
+                    { 2, "Laundry and dry cleaning service", null, null, null, "Laundry" },
+                    { 3, "Nefflix and Chill", null, null, null, "Nefflix" }
                 });
 
             migrationBuilder.InsertData(
@@ -379,9 +386,9 @@ namespace BookingHotel.Migrations
                 columns: new[] { "PaymentID", "PaymentAmount", "PaymentDate", "PaymentMethodName", "UserID" },
                 values: new object[,]
                 {
-                    { 1, 0m, new DateTime(2024, 3, 21, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2787), "Credit Card", null },
-                    { 2, 0m, new DateTime(2024, 3, 21, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2799), "Cash", null },
-                    { 3, 0m, new DateTime(2024, 3, 21, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2800), "PayPal", null }
+                    { 1, 0m, new DateTime(2024, 3, 21, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(205), "Credit Card", null },
+                    { 2, 0m, new DateTime(2024, 3, 21, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(218), "Cash", null },
+                    { 3, 0m, new DateTime(2024, 3, 21, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(219), "PayPal", null }
                 });
 
             migrationBuilder.InsertData(
@@ -424,11 +431,15 @@ namespace BookingHotel.Migrations
 
             migrationBuilder.InsertData(
                 table: "Rooms",
-                columns: new[] { "RoomID", "Price", "Rate", "RoomNumber", "RoomType", "ServiceID", "StatusID", "ThumnailRoom" },
+                columns: new[] { "RoomID", "Description", "Price", "Rate", "RoomNumber", "RoomType", "ServiceID", "StatusID", "ThumnailRoom" },
                 values: new object[,]
                 {
-                    { 1, null, 100m, 101, "Standard", 1, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" },
-                    { 2, null, 150m, 102, "Deluxe", 2, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" }
+                    { 1, "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.", 35000.0, 100m, 101, "Standard", 1, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" },
+                    { 2, "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.", 30000.0, 110m, 102, "Deluxe", 2, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" },
+                    { 3, "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.", 45000.0, 120m, 103, "VIP", 3, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" },
+                    { 4, "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.", 40000.0, 180m, 104, "Family", 2, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" },
+                    { 5, "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.", 50000.0, 130m, 105, "Class", 3, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" },
+                    { 6, "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.", 38000.0, 150m, 106, "Suite", 1, 1, "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill" }
                 });
 
             migrationBuilder.InsertData(
@@ -446,27 +457,27 @@ namespace BookingHotel.Migrations
                 columns: new[] { "BookingID", "CheckInDate", "CheckOutDate", "CustomerID", "PaymentMethodID", "ReportID", "RoomID", "TotalAmount" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 3, 22, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2852), new DateTime(2024, 3, 24, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2857), 2, 1, 1, 1, 200m },
-                    { 2, new DateTime(2024, 3, 23, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2860), new DateTime(2024, 3, 25, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2860), 3, 2, 2, 2, 300m }
+                    { 1, new DateTime(2024, 3, 22, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(292), new DateTime(2024, 3, 24, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(296), 2, 1, 1, 1, 200m },
+                    { 2, new DateTime(2024, 3, 23, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(300), new DateTime(2024, 3, 25, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(301), 3, 2, 2, 2, 300m }
                 });
 
             migrationBuilder.InsertData(
                 table: "EmployeeSchedules",
-                columns: new[] { "ScheduleID", "EmployeeID", "ShiftEndTime", "ShiftStartTime" },
-                values: new object[] { 1, 3, new DateTime(2024, 3, 21, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 21, 8, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "ScheduleID", "EmployeeID", "ShiftEndTime", "ShiftStartTime", "Slot", "Taskname" },
+                values: new object[] { 1, 3, new DateTime(2024, 3, 21, 16, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 21, 8, 0, 0, 0, DateTimeKind.Unspecified), null, null });
 
             migrationBuilder.InsertData(
                 table: "EventRooms",
                 columns: new[] { "EventRoomID", "Amenities", "EventDate", "EventDescription", "EventName", "RoomID" },
-                values: new object[] { 1, "Projector, Whiteboard", new DateTime(2024, 3, 28, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(3067), "Corporate conference", "Conference", 2 });
+                values: new object[] { 1, "Projector, Whiteboard", new DateTime(2024, 3, 28, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(603), "Corporate conference", "Conference", 2 });
 
             migrationBuilder.InsertData(
                 table: "HousekeepingTasks",
                 columns: new[] { "TaskID", "RoomID", "ScheduledTime", "TaskDescription", "TaskStatus" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 3, 22, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(3076), "Clean room", "Pending" },
-                    { 2, 2, new DateTime(2024, 3, 23, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(3078), "Change beddings", "Pending" }
+                    { 1, 1, new DateTime(2024, 3, 22, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(619), "Clean room", "Pending" },
+                    { 2, 2, new DateTime(2024, 3, 23, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(622), "Change beddings", "Pending" }
                 });
 
             migrationBuilder.InsertData(

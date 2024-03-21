@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BookingHotel.Models.HotelService>
+
+@{
+    ViewData["Title"] = "Top Services";
+}
+
+<style>
+    /* CSS để tăng độ dày của đường viền màu vàng */
+    .gold-border {
+        border-width: 4px;
+    }
+
+    /* CSS cho màu nền xanh dương */
+    body {
+        background-color: white; /* Màu xanh dương */
+        color: #000; /* Màu chữ đen */
+    }
+
+    /* CSS cho thẻ card */
+    .card {
+        background-color: #fff; /* Màu nền trắng */
+        color: #000; /* Màu chữ đen */
+        height: 100%; /* Chiều cao cố định */
+    }
+
+    /* CSS cho biểu tượng ngôi sao */
+    .fa-star {
+        color: gold; /* Màu vàng */
+    }
+
+    /* Đảm bảo các card có cùng chiều cao */
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+</style>
+<head>
+    <!-- Các thẻ khác -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<h1>Top Services</h1>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<br />
+@if (Model.Any())
+{
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach (var item in Model.Select((value, index) => new { Value = value, Index = index }))
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm @(item.Index == 0 ? "gold-border" : "")" style="border: 2px solid @(item.Index == 0 ? "gold" : "blue");">
+                    <br>
+                    <img src="@item.Value.ImageUrl" class="card-img-top" alt="Service Image">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a asp-action="Details" asp-route-id="@item.Value.ServiceID">@item.Value.ServiceName</a>
+                        </h5>
+                        <p class="card-text">@item.Value.Description</p>
+                        <p class="card-text">Rating: @item.Value.Rating <i class="fas fa-star"></i></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No services available.</p>
+}

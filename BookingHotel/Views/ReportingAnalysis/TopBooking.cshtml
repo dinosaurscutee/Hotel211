@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Top Booking</title>
+    <style>
+        /* CSS để căn giữa tiêu đề */
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Đặt màu nền cho hàng top 1 */
+        tbody tr:nth-child(1) {
+            background-color: gold;
+        }
+
+        /* Đặt màu nền cho hàng top 2 */
+        tbody tr:nth-child(2) {
+            background-color: silver;
+        }
+
+        /* Đặt màu nền cho hàng top 3 */
+        tbody tr:nth-child(3) {
+            background-color: #cd7f32; /* Đồng */
+        }
+    </style>
+</head>
+<body>
+    <!-- Tiêu đề căn giữa -->
+    <h1>Top Booking</h1>
+    <br />
+    <br />
+    <div style="display: flex;">
+        <!-- Cột bên trái -->
+        <div style="flex: 1;">
+            <button type="button" class="btn btn-primary btn-lg btn-block">
+                <a asp-controller="ReportingAnalysis" asp-action="Index" class="text-white">Revenue</a>
+            </button>
+            <br />
+            <br />
+            <button type="button" class="btn btn-primary btn-lg btn-block">
+                <a asp-controller="ReportingAnalysis" asp-action="TopBooking" class="text-white">TopRoom</a>
+            </button>
+        </div>
+
+        <!-- Bảng ở bên phải -->
+        <div style="flex: 3;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room ID</th>
+                        <th>Room Number</th>
+                        <th>Room Type</th>
+                        <th>Total Bookings</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var room in Model)
+                    {
+                        <tr>
+                            <td>@room.RoomID</td>
+                            <td>@room.RoomNumber</td>
+                            <td>@room.RoomType</td>
+                            <td>@ViewBag.RoomStatistics[room.RoomID].Item1</td>
+                            <td>@ViewBag.RoomStatistics[room.RoomID].Item2</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookingHotel.Migrations
 {
     [DbContext(typeof(HotelDbContext))]
-    [Migration("20240321074404_Init")]
-    partial class Init
+    [Migration("20240321162602_initt")]
+    partial class initt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,8 +68,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 1,
-                            CheckInDate = new DateTime(2024, 3, 22, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2852),
-                            CheckOutDate = new DateTime(2024, 3, 24, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2857),
+                            CheckInDate = new DateTime(2024, 3, 22, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(292),
+                            CheckOutDate = new DateTime(2024, 3, 24, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(296),
                             CustomerID = 2,
                             PaymentMethodID = 1,
                             ReportID = 1,
@@ -79,8 +79,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 2,
-                            CheckInDate = new DateTime(2024, 3, 23, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2860),
-                            CheckOutDate = new DateTime(2024, 3, 25, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2860),
+                            CheckInDate = new DateTime(2024, 3, 23, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(300),
+                            CheckOutDate = new DateTime(2024, 3, 25, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(301),
                             CustomerID = 3,
                             PaymentMethodID = 2,
                             ReportID = 2,
@@ -184,6 +184,12 @@ namespace BookingHotel.Migrations
                     b.Property<DateTime>("ShiftStartTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Slot")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Taskname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ScheduleID");
 
                     b.HasIndex("EmployeeID");
@@ -239,7 +245,7 @@ namespace BookingHotel.Migrations
                         {
                             EventRoomID = 1,
                             Amenities = "Projector, Whiteboard",
-                            EventDate = new DateTime(2024, 3, 28, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(3067),
+                            EventDate = new DateTime(2024, 3, 28, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(603),
                             EventDescription = "Corporate conference",
                             EventName = "Conference",
                             RoomID = 2
@@ -307,6 +313,15 @@ namespace BookingHotel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ServiceName")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -328,6 +343,12 @@ namespace BookingHotel.Migrations
                             ServiceID = 2,
                             Description = "Laundry and dry cleaning service",
                             ServiceName = "Laundry"
+                        },
+                        new
+                        {
+                            ServiceID = 3,
+                            Description = "Nefflix and Chill",
+                            ServiceName = "Nefflix"
                         });
                 });
 
@@ -410,6 +431,9 @@ namespace BookingHotel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomID"), 1L, 1);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
@@ -447,6 +471,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             RoomID = 1,
+                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            Price = 35000.0,
                             Rate = 100m,
                             RoomNumber = 101,
                             RoomType = "Standard",
@@ -457,10 +483,60 @@ namespace BookingHotel.Migrations
                         new
                         {
                             RoomID = 2,
-                            Rate = 150m,
+                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            Price = 30000.0,
+                            Rate = 110m,
                             RoomNumber = 102,
                             RoomType = "Deluxe",
                             ServiceID = 2,
+                            StatusID = 1,
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                        },
+                        new
+                        {
+                            RoomID = 3,
+                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            Price = 45000.0,
+                            Rate = 120m,
+                            RoomNumber = 103,
+                            RoomType = "VIP",
+                            ServiceID = 3,
+                            StatusID = 1,
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                        },
+                        new
+                        {
+                            RoomID = 4,
+                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            Price = 40000.0,
+                            Rate = 180m,
+                            RoomNumber = 104,
+                            RoomType = "Family",
+                            ServiceID = 2,
+                            StatusID = 1,
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                        },
+                        new
+                        {
+                            RoomID = 5,
+                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            Price = 50000.0,
+                            Rate = 130m,
+                            RoomNumber = 105,
+                            RoomType = "Class",
+                            ServiceID = 3,
+                            StatusID = 1,
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                        },
+                        new
+                        {
+                            RoomID = 6,
+                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            Price = 38000.0,
+                            Rate = 150m,
+                            RoomNumber = 106,
+                            RoomType = "Suite",
+                            ServiceID = 1,
                             StatusID = 1,
                             ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
                         });
@@ -586,7 +662,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 1,
                             RoomID = 1,
-                            ScheduledTime = new DateTime(2024, 3, 22, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(3076),
+                            ScheduledTime = new DateTime(2024, 3, 22, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(619),
                             TaskDescription = "Clean room",
                             TaskStatus = "Pending"
                         },
@@ -594,7 +670,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 2,
                             RoomID = 2,
-                            ScheduledTime = new DateTime(2024, 3, 23, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(3078),
+                            ScheduledTime = new DateTime(2024, 3, 23, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(622),
                             TaskDescription = "Change beddings",
                             TaskStatus = "Pending"
                         });
@@ -736,21 +812,21 @@ namespace BookingHotel.Migrations
                         {
                             PaymentID = 1,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 21, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2787),
+                            PaymentDate = new DateTime(2024, 3, 21, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(205),
                             PaymentMethodName = "Credit Card"
                         },
                         new
                         {
                             PaymentID = 2,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 21, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2799),
+                            PaymentDate = new DateTime(2024, 3, 21, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(218),
                             PaymentMethodName = "Cash"
                         },
                         new
                         {
                             PaymentID = 3,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 21, 14, 44, 3, 592, DateTimeKind.Local).AddTicks(2800),
+                            PaymentDate = new DateTime(2024, 3, 21, 23, 26, 1, 883, DateTimeKind.Local).AddTicks(219),
                             PaymentMethodName = "PayPal"
                         });
                 });
