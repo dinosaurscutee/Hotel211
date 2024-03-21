@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookingHotel.Models.Room>
+
+@{
+    ViewData["Title"] = "Room Cleaning Management";
+}
+
+<h1>Room Cleaning Management</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Room room in ViewBag.Rooms)
+            {
+                <tr>
+                    <td>@room.RoomNumber</td>
+                    <td>@room.RoomType</td>
+                    <td>
+                        <form asp-controller="CleanCheckout" asp-action="Index" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@room.RoomID" />
+                            <div class="form-group">
+                                <select name="cleanerId" class="form-control">
+                                    @foreach (User user in ViewBag.Users)
+                                    {
+                                        <option value="@user.UserID">@user.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-broom"></i> Clean</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

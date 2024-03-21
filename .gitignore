@@ -3,6 +3,7 @@
 /bin/
 /obj/
 /Migrations/
+
 # Ignore build output
 *.dll
 *.exe
@@ -49,3 +50,4 @@ packages/
 *.sqlite3
 *.pem
 *.pfx
+Migrations/

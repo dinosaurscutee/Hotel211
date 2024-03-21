@@ -47,9 +47,15 @@ namespace BookingHotel.Controllers
         // GET: EmployeeSchedules/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeID"] = new SelectList(_context.Users, "UserID", "Email");
+            // Lấy danh sách người dùng có vai trò là 2 từ cơ sở dữ liệu
+            var usersWithRole2 = _context.Users.Where(u => u.RoleID == 2).ToList();
+
+            // Tạo danh sách thả xuống từ danh sách người dùng
+            ViewData["EmployeeID"] = new SelectList(usersWithRole2, "UserID", "UserName");
+
             return View();
         }
+
 
         // POST: EmployeeSchedules/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -64,14 +70,14 @@ namespace BookingHotel.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             //}
-            ViewData["EmployeeID"] = new SelectList(_context.Users, "UserID", "Email", employeeSchedule.EmployeeID);
+            ViewData["EmployeeID"] = new SelectList(_context.Users, "UserID", "UserName", employeeSchedule.EmployeeID);
             return View(employeeSchedule);
         }
 
         // GET: EmployeeSchedules/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.EmployeeSchedules == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -81,9 +87,14 @@ namespace BookingHotel.Controllers
             {
                 return NotFound();
             }
-            ViewData["EmployeeID"] = new SelectList(_context.Users, "UserID", "Email", employeeSchedule.EmployeeID);
+
+            // Lấy danh sách người dùng có RoleID = 2
+            var usersWithRoleId2 = _context.Users.Where(u => u.RoleID == 2);
+            ViewData["EmployeeID"] = new SelectList(usersWithRoleId2, "UserID", "UserName", employeeSchedule.EmployeeID);
+
             return View(employeeSchedule);
         }
+
 
         // POST: EmployeeSchedules/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -97,8 +108,8 @@ namespace BookingHotel.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(employeeSchedule);
@@ -116,8 +127,8 @@ namespace BookingHotel.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["EmployeeID"] = new SelectList(_context.Users, "UserID", "Email", employeeSchedule.EmployeeID);
+            //}
+            ViewData["EmployeeID"] = new SelectList(_context.Users, "UserID", "UserName", employeeSchedule.EmployeeID);
             return View(employeeSchedule);
         }
 

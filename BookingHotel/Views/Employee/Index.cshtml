@@ -24,10 +24,6 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Role</th>
-                    <th>Email Confirmation Token</th>
-                    <th>Reset Password Token</th>
-                    <th>Token Created At</th>
-                    <th>Is Email Confirmed</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -42,10 +38,6 @@
                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
                         <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
                         <td>@Html.DisplayFor(modelItem => item.Role.RoleName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.EmailConfirmationToken)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ResetPasswordToken)</td>
-                        <td>@Html.DisplayFor(modelItem => item.TokenCreatedAt)</td>
-                        <td>@Html.DisplayFor(modelItem => item.IsEmailConfirmed)</td>
                         <td>
                             <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.UserID">Edit</a>
                             <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.UserID">Details</a>
