@@ -47,6 +47,10 @@ public class RoomController : Controller
             return NotFound();
         }
 
+        var otherRooms = _context.Rooms.Where(r => r.RoomID != id).ToList();
+        ViewBag.Room = room;
+        ViewBag.OtherRooms = otherRooms;
+
         return View(room);
     }
 

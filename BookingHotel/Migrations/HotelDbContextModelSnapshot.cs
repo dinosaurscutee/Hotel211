@@ -66,8 +66,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 1,
-                            CheckInDate = new DateTime(2024, 3, 23, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7740),
-                            CheckOutDate = new DateTime(2024, 3, 25, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7751),
+                            CheckInDate = new DateTime(2024, 3, 24, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1407),
+                            CheckOutDate = new DateTime(2024, 3, 26, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1412),
                             CustomerID = 2,
                             PaymentMethodID = 1,
                             ReportID = 1,
@@ -77,8 +77,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 2,
-                            CheckInDate = new DateTime(2024, 3, 24, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7766),
-                            CheckOutDate = new DateTime(2024, 3, 26, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7767),
+                            CheckInDate = new DateTime(2024, 3, 25, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1418),
+                            CheckOutDate = new DateTime(2024, 3, 27, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1418),
                             CustomerID = 3,
                             PaymentMethodID = 2,
                             ReportID = 2,
@@ -199,8 +199,8 @@ namespace BookingHotel.Migrations
                         {
                             ScheduleID = 1,
                             EmployeeID = 3,
-                            ShiftEndTime = new DateTime(2024, 3, 22, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            ShiftStartTime = new DateTime(2024, 3, 22, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                            ShiftEndTime = new DateTime(2024, 3, 23, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            ShiftStartTime = new DateTime(2024, 3, 23, 8, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -243,7 +243,7 @@ namespace BookingHotel.Migrations
                         {
                             EventRoomID = 1,
                             Amenities = "Projector, Whiteboard",
-                            EventDate = new DateTime(2024, 3, 29, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8116),
+                            EventDate = new DateTime(2024, 3, 30, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1719),
                             EventDescription = "Corporate conference",
                             EventName = "Conference",
                             RoomID = 2
@@ -494,7 +494,7 @@ namespace BookingHotel.Migrations
                             RoomType = "Deluxe",
                             ServiceID = 2,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            ThumnailRoom = "https://img.freepik.com/free-photo/luxury-bedroom-suite-resort-high-rise-hotel-with-working-table_105762-1783.jpg",
                             View = "Mountain View"
                         },
                         new
@@ -507,7 +507,7 @@ namespace BookingHotel.Migrations
                             RoomType = "Family",
                             ServiceID = 3,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            ThumnailRoom = "https://media.istockphoto.com/id/627892060/photo/hotel-room-suite-with-view.jpg?s=612x612&w=0&k=20&c=YBwxnGH3MkOLLpBKCvWAD8F__T-ypznRUJ_N13Zb1cU=",
                             View = "Mountain View"
                         },
                         new
@@ -520,7 +520,7 @@ namespace BookingHotel.Migrations
                             RoomType = "Super",
                             ServiceID = 1,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            ThumnailRoom = "https://cms.saharalasvegas.com/wp-content/uploads/2022/03/Marra-Style-Featured-Image-1048-%C3%97-640-px-1024x625.jpg",
                             View = "City View"
                         },
                         new
@@ -533,7 +533,7 @@ namespace BookingHotel.Migrations
                             RoomType = "Suite",
                             ServiceID = 3,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            ThumnailRoom = "https://2.imimg.com/data2/SI/TS/MY-3125576/lemon_tree_hotel_single-room-500x500.jpg",
                             View = "Sea View"
                         },
                         new
@@ -546,7 +546,7 @@ namespace BookingHotel.Migrations
                             RoomType = "VIP",
                             ServiceID = 2,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            ThumnailRoom = "https://www.caesars.com/content/dam/plv/Room/versailles/versailles-renderings/plv-versailles-king-eiffel-tower-view.jpg.transform/slider-img/image.jpg",
                             View = "City View"
                         });
                 });
@@ -624,6 +624,33 @@ namespace BookingHotel.Migrations
                     b.HasIndex("AmenityID");
 
                     b.ToTable("RoomRoomAmenities");
+
+                    b.HasData(
+                        new
+                        {
+                            RoomID = 1,
+                            AmenityID = 1
+                        },
+                        new
+                        {
+                            RoomID = 2,
+                            AmenityID = 2
+                        },
+                        new
+                        {
+                            RoomID = 3,
+                            AmenityID = 3
+                        },
+                        new
+                        {
+                            RoomID = 4,
+                            AmenityID = 4
+                        },
+                        new
+                        {
+                            RoomID = 5,
+                            AmenityID = 5
+                        });
                 });
 
             modelBuilder.Entity("BookingHotel.Models.RoomStatus", b =>
@@ -658,6 +685,11 @@ namespace BookingHotel.Migrations
                         {
                             StatusID = 3,
                             StatusName = "Occupied"
+                        },
+                        new
+                        {
+                            StatusID = 4,
+                            StatusName = "Watting"
                         });
                 });
 
@@ -695,7 +727,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 1,
                             RoomID = 1,
-                            ScheduledTime = new DateTime(2024, 3, 23, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8135),
+                            ScheduledTime = new DateTime(2024, 3, 24, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1740),
                             TaskDescription = "Clean room",
                             TaskStatus = "Pending"
                         },
@@ -703,7 +735,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 2,
                             RoomID = 2,
-                            ScheduledTime = new DateTime(2024, 3, 24, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8137),
+                            ScheduledTime = new DateTime(2024, 3, 25, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1743),
                             TaskDescription = "Change beddings",
                             TaskStatus = "Pending"
                         });
@@ -809,6 +841,97 @@ namespace BookingHotel.Migrations
                             PhoneNumber = "111222333",
                             RoleID = 3,
                             UserName = "staff1"
+                        },
+                        new
+                        {
+                            UserID = 4,
+                            Email = "Dung@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Ngo",
+                            IsEmailConfirmed = true,
+                            LastName = "Dung",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 3,
+                            UserName = "Dung"
+                        },
+                        new
+                        {
+                            UserID = 5,
+                            Email = "Hieu@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Hoang Quang",
+                            IsEmailConfirmed = true,
+                            LastName = "Hieu",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 2,
+                            UserName = "Hieu"
+                        },
+                        new
+                        {
+                            UserID = 6,
+                            Email = "Hoang@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Nguyen",
+                            IsEmailConfirmed = true,
+                            LastName = "Hoang",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 3,
+                            UserName = "Hoang"
+                        },
+                        new
+                        {
+                            UserID = 7,
+                            Email = "Khai@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Hua",
+                            IsEmailConfirmed = true,
+                            LastName = "Khai",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 3,
+                            UserName = "Khai"
+                        },
+                        new
+                        {
+                            UserID = 8,
+                            Email = "Lam@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Tung",
+                            IsEmailConfirmed = true,
+                            LastName = "Lam",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 2,
+                            UserName = "Lam"
+                        },
+                        new
+                        {
+                            UserID = 9,
+                            Email = "Tuyen@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Pham",
+                            IsEmailConfirmed = true,
+                            LastName = "Tuyen",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 3,
+                            UserName = "Tuyen"
+                        },
+                        new
+                        {
+                            UserID = 10,
+                            Email = "Huy@example.com",
+                            EmailConfirmationToken = "abc",
+                            FirstName = "Quang",
+                            IsEmailConfirmed = true,
+                            LastName = "Huy",
+                            Password = "staff123",
+                            PhoneNumber = "111222333",
+                            RoleID = 2,
+                            UserName = "Huy"
                         });
                 });
 
@@ -845,21 +968,21 @@ namespace BookingHotel.Migrations
                         {
                             PaymentID = 1,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7525),
+                            PaymentDate = new DateTime(2024, 3, 23, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1309),
                             PaymentMethodName = "Credit Card"
                         },
                         new
                         {
                             PaymentID = 2,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7535),
+                            PaymentDate = new DateTime(2024, 3, 23, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1320),
                             PaymentMethodName = "Cash"
                         },
                         new
                         {
                             PaymentID = 3,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7536),
+                            PaymentDate = new DateTime(2024, 3, 23, 0, 2, 51, 405, DateTimeKind.Local).AddTicks(1321),
                             PaymentMethodName = "PayPal"
                         });
                 });
