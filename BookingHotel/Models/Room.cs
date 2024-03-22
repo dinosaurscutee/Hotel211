@@ -7,23 +7,26 @@ namespace BookingHotel.Models
         public int RoomID { get; set; }
 
         [Required]
-        public int? RoomNumber { get; set; }
+        public int RoomNumber { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string? RoomType { get; set; }
+        public string RoomType { get; set; }
 
         public int? StatusID { get; set; }
         public RoomStatus Status { get; set; }
 
         [Required]
-        public decimal? Rate { get; set; }
-        public int? ServiceID { get; set; }
+        public decimal Rate { get; set; }
+        public int ServiceID { get; set; }
 
-        public string? ThumnailRoom {  get; set; }
+        public string ThumnailRoom { get; set; }
 
         public double? Price { get; set; }
-        public string? Description { get; set; }
+
+        public string View { get; set; }
+
+        public string DescriptionRoom { get; set; }
 
         // Quan hệ Nhiều-Nhiều với Tiện ích Phòng
         public ICollection<RoomRoomAmenities> RoomAmenities { get; set; }

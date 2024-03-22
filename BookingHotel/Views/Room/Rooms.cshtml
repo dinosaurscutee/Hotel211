@@ -81,18 +81,18 @@
 						{
 							<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 								<div class="room">
-									<a href="rooms-single.html" class="img d-flex justify-content-center align-items-center"
-								   style="background-image: url(@room.ThumnailRoom);">
+									<a href="@Url.Action("RoomDetail", "Room", new { id = room.RoomID })" class="img d-flex justify-content-center align-items-center" style="background-image: url('@room.ThumnailRoom');">
 										<div class="icon d-flex justify-content-center align-items-center">
 											<span class="icon-search2"></span>
 										</div>
 									</a>
 									<div class="text p-3 text-center">
-										<h3 class="mb-3"><a href="rooms-single.html">@room.RoomType</a></h3>
+										<h3 class="mb-3"><a href="@Url.Action("RoomDetail", "Room", new { id = room.RoomID })">@room.RoomType</a></h3>
 										<p><span class="price mr-2">@string.Format("{0:C}", room.Price)</span> <span class="per">per night</span></p>
 										<ul class="list">
 											<li><span>Status:</span> @room.Status.StatusName</li>
 											<li><span>Size:</span> 45 m2</li>
+											<li><span>View:</span> @room.View</li>
 										</ul>
 										<hr>
 										<p class="pt-1">
@@ -118,19 +118,19 @@
 									<input type="text" id="checkin_date" class="form-control checkout_date"
 										   placeholder="Check Out Date">
 								</div>
-                                <div class="form-group">
-                                    <!-- Dropdown Room Type -->
-                                    <div class="select-wrap one-third">
-                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="roomType" id="roomType" class="form-control">
-                                            <option value="">Room Type</option>
-                                            @foreach (var roomType in ViewBag.RoomTypes)
-                                            {
-                                                <option value="@roomType">@roomType</option>
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
+								<div class="form-group">
+									<!-- Dropdown Room Type -->
+									<div class="select-wrap one-third">
+										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+										<select name="roomType" id="roomType" class="form-control">
+											<option value="">Room Type</option>
+											@foreach (var roomType in ViewBag.RoomTypes)
+											{
+												<option value="@roomType">@roomType</option>
+											}
+										</select>
+									</div>
+								</div>
 								<div class="form-group">
 									<div class="range-slider">
 										<span>
