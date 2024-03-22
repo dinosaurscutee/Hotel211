@@ -2003,3 +2003,12 @@ E:\211\Hotel211\BookingHotel\obj\Debug\net6.0\refint\BookingHotel.dll
 E:\211\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.pdb
 E:\211\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.genruntimeconfig.cache
 E:\211\Hotel211\BookingHotel\obj\Debug\net6.0\ref\BookingHotel.dll
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.csproj.AssemblyReference.cache
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.GeneratedMSBuildEditorConfig.editorconfig
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.AssemblyInfoInputs.cache
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.AssemblyInfo.cs
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.csproj.CoreCompileInputs.cache
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.MvcApplicationPartsAssemblyInfo.cache
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.RazorAssemblyInfo.cache
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.RazorAssemblyInfo.cs
+E:\bookingHotel\Hotel211\BookingHotel\obj\Debug\net6.0\BookingHotel.sourcelink.json

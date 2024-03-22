@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\211\\Hotel211\\BookingHotel\\BookingHotel.csproj": {}
+    "E:\\bookingHotel\\Hotel211\\BookingHotel\\BookingHotel.csproj": {}
   },
   "projects": {
-    "E:\\211\\Hotel211\\BookingHotel\\BookingHotel.csproj": {
+    "E:\\bookingHotel\\Hotel211\\BookingHotel\\BookingHotel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\211\\Hotel211\\BookingHotel\\BookingHotel.csproj",
+        "projectUniqueName": "E:\\bookingHotel\\Hotel211\\BookingHotel\\BookingHotel.csproj",
         "projectName": "BookingHotel",
-        "projectPath": "E:\\211\\Hotel211\\BookingHotel\\BookingHotel.csproj",
+        "projectPath": "E:\\bookingHotel\\Hotel211\\BookingHotel\\BookingHotel.csproj",
         "packagesPath": "C:\\Users\\quang\\.nuget\\packages\\",
-        "outputPath": "E:\\211\\Hotel211\\BookingHotel\\obj\\",
+        "outputPath": "E:\\bookingHotel\\Hotel211\\BookingHotel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
