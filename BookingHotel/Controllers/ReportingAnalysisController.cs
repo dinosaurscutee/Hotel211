@@ -21,6 +21,11 @@ namespace BookingHotel.Controllers
 
         public IActionResult Index(int? year)
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             List<Booking> bookings1 = context.Bookings.ToList();
             int countBook = bookings1.Count;
             decimal sumtotal = 0;
@@ -67,6 +72,11 @@ namespace BookingHotel.Controllers
 
         public IActionResult TopBooking()
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             var topRooms = context.Bookings
                 .GroupBy(b => b.RoomID)
                 .OrderByDescending(g => g.Count())
