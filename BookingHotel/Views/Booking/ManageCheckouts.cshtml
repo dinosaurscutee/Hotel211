@@ -1,0 +1,30 @@
+﻿@model List<BookingHotel.Models.Booking>
+
+<h2>Manage Checkouts</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Room</th>
+            <th>Check-In Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingID</td>
+                <td>@booking.Room.RoomNumber</td>
+                <td>@booking.CheckInDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <form asp-action="UpdateCheckoutTime" method="post">
+                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
+                        <button type="submit" class="btn btn-primary">Checkout</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

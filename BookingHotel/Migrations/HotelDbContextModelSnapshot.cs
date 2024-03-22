@@ -33,10 +33,10 @@ namespace BookingHotel.Migrations
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CheckOutDate")
+                    b.Property<DateTime?>("CheckOutDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<int>("PaymentMethodID")
@@ -66,8 +66,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 1,
-                            CheckInDate = new DateTime(2024, 3, 23, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3728),
-                            CheckOutDate = new DateTime(2024, 3, 25, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3733),
+                            CheckInDate = new DateTime(2024, 3, 23, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7740),
+                            CheckOutDate = new DateTime(2024, 3, 25, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7751),
                             CustomerID = 2,
                             PaymentMethodID = 1,
                             ReportID = 1,
@@ -77,8 +77,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 2,
-                            CheckInDate = new DateTime(2024, 3, 24, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3737),
-                            CheckOutDate = new DateTime(2024, 3, 26, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3738),
+                            CheckInDate = new DateTime(2024, 3, 24, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7766),
+                            CheckOutDate = new DateTime(2024, 3, 26, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7767),
                             CustomerID = 3,
                             PaymentMethodID = 2,
                             ReportID = 2,
@@ -243,7 +243,7 @@ namespace BookingHotel.Migrations
                         {
                             EventRoomID = 1,
                             Amenities = "Projector, Whiteboard",
-                            EventDate = new DateTime(2024, 3, 29, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(4018),
+                            EventDate = new DateTime(2024, 3, 29, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8116),
                             EventDescription = "Corporate conference",
                             EventName = "Conference",
                             RoomID = 2
@@ -429,18 +429,17 @@ namespace BookingHotel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomID"), 1L, 1);
 
-                    b.Property<string>("Description")
+                    b.Property<string>("DescriptionRoom")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
-                    b.Property<decimal?>("Rate")
-                        .IsRequired()
+                    b.Property<decimal>("Rate")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("RoomNumber")
-                        .IsRequired()
+                    b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("RoomType")
@@ -448,8 +447,7 @@ namespace BookingHotel.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int?>("ServiceID")
-                        .IsRequired()
+                    b.Property<int>("ServiceID")
                         .HasColumnType("int");
 
                     b.Property<int?>("StatusID")
@@ -457,6 +455,11 @@ namespace BookingHotel.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ThumnailRoom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("View")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RoomID");
@@ -471,74 +474,80 @@ namespace BookingHotel.Migrations
                         new
                         {
                             RoomID = 1,
-                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
-                            Price = 35000.0,
+                            DescriptionRoom = "Standard 3-star room has an area of 45m2 and is equipped with 1 large, spacious and comfortable king bed. Guests staying at the hotel will be able to see Hoa Lac city with sea views overlooking 2 main roads. Not only that, with a bathroom full of equipment and services, customers will certainly have a feeling of relaxation and comfort when using it.",
+                            Price = 30000.0,
                             Rate = 100m,
                             RoomNumber = 101,
                             RoomType = "Standard",
                             ServiceID = 1,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            View = "Sea View"
                         },
                         new
                         {
                             RoomID = 2,
-                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
-                            Price = 30000.0,
-                            Rate = 110m,
+                            DescriptionRoom = "3-star standard Deluxe room has an area of 45m2 equipped with 2 single beds (each bed size is 1.4m x 2m) very spacious and comfortable. Guests staying at the hotel will be able to see Hoa Lac city with a mountain view overlooking the majestic mountains. Not only that, with a bathroom full of equipment and services, customers will certainly have a feeling of relaxation and comfort when using it.",
+                            Price = 35000.0,
+                            Rate = 150m,
                             RoomNumber = 102,
                             RoomType = "Deluxe",
                             ServiceID = 2,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            View = "Mountain View"
                         },
                         new
                         {
                             RoomID = 3,
-                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
-                            Price = 45000.0,
+                            DescriptionRoom = "3-star standard Family room has an area of 45m2 equipped with 2 single beds (each bed size is 1.4m x 2m) very spacious and comfortable. Guests staying at the hotel will be able to see Hoa Lac city with a mountain view overlooking the majestic mountains. Not only that, with a bathroom full of equipment and services, customers will certainly have a feeling of relaxation and comfort when using it.",
+                            Price = 40000.0,
                             Rate = 120m,
                             RoomNumber = 103,
-                            RoomType = "VIP",
+                            RoomType = "Family",
                             ServiceID = 3,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            View = "Mountain View"
                         },
                         new
                         {
                             RoomID = 4,
-                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
-                            Price = 40000.0,
-                            Rate = 180m,
+                            DescriptionRoom = "Super room meets 3-star standard with an area of 45m2 and a very elegant interior design, bringing a relaxing and gentle feeling when customers stay. The room has a view overlooking the spacious FPT University of Hoa Lac city, with a private balcony, customers will feel the bustle of this beautiful coastal city. The bedroom is equipped with 2 beds (each bed size is 1.2m x 2m) very comfortable. Besides, the spacious bathroom with full amenities helps customers relax and have a wonderful experience.",
+                            Price = 45000.0,
+                            Rate = 130m,
                             RoomNumber = 104,
-                            RoomType = "Family",
-                            ServiceID = 2,
+                            RoomType = "Super",
+                            ServiceID = 1,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            View = "City View"
                         },
                         new
                         {
                             RoomID = 5,
-                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
+                            DescriptionRoom = "This is also one of the two most spacious rooms (45m2) as well as the most luxurious in the hotel. The room has 3 beautiful views of Hoa Lac beach with 2 private balconies. The room has 1 bedroom (bed size is 2m x 2.2m) and 2 living areas: the living room and the tea area, suitable for receiving guests very formally and politely. The bathroom has a deep soaking tub that will help customers soak and relax after a tiring day of work.",
                             Price = 50000.0,
-                            Rate = 130m,
+                            Rate = 140m,
                             RoomNumber = 105,
-                            RoomType = "Class",
+                            RoomType = "Suite",
                             ServiceID = 3,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            View = "Sea View"
                         },
                         new
                         {
                             RoomID = 6,
-                            Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world.",
-                            Price = 38000.0,
-                            Rate = 150m,
+                            DescriptionRoom = "VIP Suite is one of the two largest rooms (45m2) as well as the most luxurious in the hotel. The room has 3 beautiful views overlooking the main streets of the city with 2 private balconies with great views. The room has 1 bedroom (bed size is 2m x 2.2m) and 2 living areas: the living room and the tea area that can receive guests very elegantly. Not only that, the bathroom has a deep soaking tub, which will help customers soak and relax after a tiring time.",
+                            Price = 55000.0,
+                            Rate = 160m,
                             RoomNumber = 106,
-                            RoomType = "Suite",
-                            ServiceID = 1,
+                            RoomType = "VIP",
+                            ServiceID = 2,
                             StatusID = 1,
-                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill"
+                            ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill",
+                            View = "City View"
                         });
                 });
 
@@ -575,6 +584,30 @@ namespace BookingHotel.Migrations
                             AmenityID = 2,
                             AmenityName = "TV",
                             Description = "Flat-screen television"
+                        },
+                        new
+                        {
+                            AmenityID = 3,
+                            AmenityName = "Mini Refrigerator",
+                            Description = "Mini bar includes free coffee and water"
+                        },
+                        new
+                        {
+                            AmenityID = 4,
+                            AmenityName = "Air conditioning",
+                            Description = "Air conditioning and refreshment center"
+                        },
+                        new
+                        {
+                            AmenityID = 5,
+                            AmenityName = "Lock the door securely",
+                            Description = "Coded secure door lock"
+                        },
+                        new
+                        {
+                            AmenityID = 6,
+                            AmenityName = "Bathtub",
+                            Description = "Comfortable bathtub"
                         });
                 });
 
@@ -662,7 +695,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 1,
                             RoomID = 1,
-                            ScheduledTime = new DateTime(2024, 3, 23, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(4033),
+                            ScheduledTime = new DateTime(2024, 3, 23, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8135),
                             TaskDescription = "Clean room",
                             TaskStatus = "Pending"
                         },
@@ -670,7 +703,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 2,
                             RoomID = 2,
-                            ScheduledTime = new DateTime(2024, 3, 24, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(4035),
+                            ScheduledTime = new DateTime(2024, 3, 24, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8137),
                             TaskDescription = "Change beddings",
                             TaskStatus = "Pending"
                         });
@@ -812,21 +845,21 @@ namespace BookingHotel.Migrations
                         {
                             PaymentID = 1,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3520),
+                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7525),
                             PaymentMethodName = "Credit Card"
                         },
                         new
                         {
                             PaymentID = 2,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3533),
+                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7535),
                             PaymentMethodName = "Cash"
                         },
                         new
                         {
                             PaymentID = 3,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 2, 28, 7, 753, DateTimeKind.Local).AddTicks(3534),
+                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7536),
                             PaymentMethodName = "PayPal"
                         });
                 });
