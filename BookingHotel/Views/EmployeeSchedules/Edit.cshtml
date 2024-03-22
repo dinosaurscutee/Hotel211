@@ -37,16 +37,17 @@
 
 
             <div class="form-group">
-                <label asp-for="ShiftStartTime" class="control-label">Shift Start Time</label>
-                <input asp-for="ShiftStartTime" class="form-control" type="datetime-local" />
+                <label asp-for="ShiftStartTime" class="control-label">Shift Start Date</label>
+                <input asp-for="ShiftStartTime" class="form-control" type="date" />
                 <span asp-validation-for="ShiftStartTime" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ShiftEndTime" class="control-label">Shift End Time</label>
-                <input asp-for="ShiftEndTime" class="form-control" type="datetime-local" />
+                <label asp-for="ShiftEndTime" class="control-label">Shift End Date</label>
+                <input asp-for="ShiftEndTime" class="form-control" type="date" />
                 <span asp-validation-for="ShiftEndTime" class="text-danger"></span>
             </div>
+
 
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Save</button>
