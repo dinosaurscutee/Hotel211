@@ -21,6 +21,11 @@ namespace BookingHotel.Controllers
         // GET: Employee
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             var hotelDbContext = _context.Users
                 .Include(u => u.Role)
                 .Where(u => u.RoleID == 2);
@@ -50,6 +55,11 @@ namespace BookingHotel.Controllers
         // GET: Employee/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             // Đặt giá trị mặc định cho RoleID là 2
             ViewData["RoleID"] = new SelectList(_context.Roles.Where(r => r.RoleID == 2), "RoleID", "RoleName");
             return View();
@@ -62,6 +72,11 @@ namespace BookingHotel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserID,UserName,Password,FirstName,LastName,Email,PhoneNumber,EmailConfirmationToken,ResetPasswordToken,TokenCreatedAt,IsEmailConfirmed")] User user)
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             // Đặt RoleID mặc định là 2 trước khi thêm vào context
             user.RoleID = 2;
 

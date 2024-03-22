@@ -21,6 +21,11 @@ namespace BookingHotel.Controllers
         // GET: EmployeeSchedules
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             var hotelDbContext = _context.EmployeeSchedules.Include(e => e.Employee);
             return View(await hotelDbContext.ToListAsync());
         }
@@ -47,6 +52,11 @@ namespace BookingHotel.Controllers
         // GET: EmployeeSchedules/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             // Lấy danh sách người dùng có vai trò là 2 từ cơ sở dữ liệu
             var usersWithRole2 = _context.Users.Where(u => u.RoleID == 2).ToList();
 
@@ -64,9 +74,14 @@ namespace BookingHotel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ScheduleID,EmployeeID,Taskname,Slot,ShiftStartTime,ShiftEndTime")] EmployeeSchedule employeeSchedule)
         {
+            if (HttpContext.Session.GetString("UserRole") != "Admin")
+            {
+                // Nếu không phải là Admin, chuyển hướng đến trang đăng nhập hoặc trang lỗi khác
+                return RedirectToAction("Login", "Account"); // Đây là giả định về tên của controller và action đăng nhập của bạn
+            }
             //if (ModelState.IsValid)
             //{
-                _context.Add(employeeSchedule);
+            _context.Add(employeeSchedule);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             //}

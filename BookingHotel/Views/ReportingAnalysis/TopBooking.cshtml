@@ -62,6 +62,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>Room ID</th>
                         <th>Room Number</th>
                         <th>Room Type</th>
@@ -70,15 +71,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var room in Model)
-                    {
-                        <tr>
-                            <td>@room.RoomID</td>
-                            <td>@room.RoomNumber</td>
-                            <td>@room.RoomType</td>
-                            <td>@ViewBag.RoomStatistics[room.RoomID].Item1</td>
-                            <td>@ViewBag.RoomStatistics[room.RoomID].Item2</td>
-                        </tr>
+                    @{
+                        // Khởi tạo biến đếm STT
+                        var stt = 1;
+                        // Duyệt qua mỗi phần tử trong Model
+                        foreach (var room in Model)
+                        {
+                            // In ra các thông tin về phòng và sử dụng biến đếm làm STT
+                            <tr>
+                                <td>@stt</td>
+                                <td>@room.RoomID</td>
+                                <td>@room.RoomNumber</td>
+                                <td>@room.RoomType</td>
+                                <td>@ViewBag.RoomStatistics[room.RoomID].Item1</td>
+                                <td>@ViewBag.RoomStatistics[room.RoomID].Item2</td>
+                            </tr>
+
+                            // Tăng giá trị của biến đếm sau mỗi lần lặp
+                            stt++;
+                        }
                     }
                 </tbody>
             </table>
