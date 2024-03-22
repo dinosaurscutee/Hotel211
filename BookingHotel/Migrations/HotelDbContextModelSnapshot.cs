@@ -33,10 +33,10 @@ namespace BookingHotel.Migrations
                     b.Property<DateTime>("CheckInDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("CheckOutDate")
+                    b.Property<DateTime?>("CheckOutDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<int>("PaymentMethodID")
@@ -66,8 +66,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 1,
-                            CheckInDate = new DateTime(2024, 3, 23, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4696),
-                            CheckOutDate = new DateTime(2024, 3, 25, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4705),
+                            CheckInDate = new DateTime(2024, 3, 23, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7740),
+                            CheckOutDate = new DateTime(2024, 3, 25, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7751),
                             CustomerID = 2,
                             PaymentMethodID = 1,
                             ReportID = 1,
@@ -77,8 +77,8 @@ namespace BookingHotel.Migrations
                         new
                         {
                             BookingID = 2,
-                            CheckInDate = new DateTime(2024, 3, 24, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4709),
-                            CheckOutDate = new DateTime(2024, 3, 26, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4709),
+                            CheckInDate = new DateTime(2024, 3, 24, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7766),
+                            CheckOutDate = new DateTime(2024, 3, 26, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7767),
                             CustomerID = 3,
                             PaymentMethodID = 2,
                             ReportID = 2,
@@ -243,7 +243,7 @@ namespace BookingHotel.Migrations
                         {
                             EventRoomID = 1,
                             Amenities = "Projector, Whiteboard",
-                            EventDate = new DateTime(2024, 3, 29, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(5041),
+                            EventDate = new DateTime(2024, 3, 29, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8116),
                             EventDescription = "Corporate conference",
                             EventName = "Conference",
                             RoomID = 2
@@ -695,7 +695,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 1,
                             RoomID = 1,
-                            ScheduledTime = new DateTime(2024, 3, 23, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(5054),
+                            ScheduledTime = new DateTime(2024, 3, 23, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8135),
                             TaskDescription = "Clean room",
                             TaskStatus = "Pending"
                         },
@@ -703,7 +703,7 @@ namespace BookingHotel.Migrations
                         {
                             TaskID = 2,
                             RoomID = 2,
-                            ScheduledTime = new DateTime(2024, 3, 24, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(5056),
+                            ScheduledTime = new DateTime(2024, 3, 24, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(8137),
                             TaskDescription = "Change beddings",
                             TaskStatus = "Pending"
                         });
@@ -845,21 +845,21 @@ namespace BookingHotel.Migrations
                         {
                             PaymentID = 1,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4616),
+                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7525),
                             PaymentMethodName = "Credit Card"
                         },
                         new
                         {
                             PaymentID = 2,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4629),
+                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7535),
                             PaymentMethodName = "Cash"
                         },
                         new
                         {
                             PaymentID = 3,
                             PaymentAmount = 0m,
-                            PaymentDate = new DateTime(2024, 3, 22, 11, 38, 20, 513, DateTimeKind.Local).AddTicks(4630),
+                            PaymentDate = new DateTime(2024, 3, 22, 21, 58, 57, 68, DateTimeKind.Local).AddTicks(7536),
                             PaymentMethodName = "PayPal"
                         });
                 });
