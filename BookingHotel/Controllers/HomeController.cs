@@ -21,7 +21,9 @@ namespace BookingHotel.Controllers
 
         public IActionResult Index()
         {
-            var rooms = _context.Rooms.ToList();
+            var rooms = _context.Rooms
+                .Where(p=>p.StatusID == 1)
+                .ToList();
             return View(rooms);
 
         }

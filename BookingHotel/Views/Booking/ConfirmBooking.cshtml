@@ -1,5 +1,8 @@
 ﻿@model BookingHotel.Models.Room
-
+@using Microsoft.AspNetCore.Http
+@{
+    var customerId = Context.Session.GetString("CustomerId");
+}
 
 <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
     <div class="overlay"></div>
@@ -44,10 +47,20 @@
                                 <li><span>View:</span> @Model.View</li>
                             </ul>
                         </div>
-                        @using (Html.BeginForm("BookRoom", "Booking", FormMethod.Post))
+                        @if (ViewContext.HttpContext.Session.GetString("UserName") != null)
                         {
-                            @Html.HiddenFor(model => model.RoomID)
-                            <button type="submit" class="btn btn-primary">Book Now</button>
+                            using (Html.BeginForm("BookRoom", "Booking", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(model => model.RoomID)
+                                <input type="hidden" id="customerId" name="customerId" value="@customerId" />
+                                <button type="submit" class="btn btn-primary">Book Now</button>
+                            }
+                        }
+                        else
+                        {
+                            <h3>(You mus login to booking)</h3>
+                           <a class="btn btn-danger" asp-controller="Account" asp-action="Login">Login</a>
+
                         }
                         <h1>Room Amenities:</h1>
                         <br />
