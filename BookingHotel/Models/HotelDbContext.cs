@@ -37,7 +37,7 @@ namespace BookingHotel.Models
             modelBuilder.Entity<EmployeeSchedule>()
                .HasKey(es => es.ScheduleID);
             modelBuilder.Entity<HotelService>()
-              .HasKey(es => es.ServiceID);  
+              .HasKey(es => es.ServiceID);
             modelBuilder.Entity<Task>()
               .HasKey(es => es.TaskID);
             modelBuilder.Entity<RoomAmenities>()
@@ -159,7 +159,7 @@ namespace BookingHotel.Models
 
             // Seed data for User
             modelBuilder.Entity<User>().HasData(
-                new User { UserID = 1, UserName = "admin", Password = "admin123", FirstName = "Admin", LastName = "User", Email = "admin@example.com", PhoneNumber = "123456789", RoleID = 1,EmailConfirmationToken = "abc" , IsEmailConfirmed = true },
+                new User { UserID = 1, UserName = "admin", Password = "admin123", FirstName = "Admin", LastName = "User", Email = "admin@example.com", PhoneNumber = "123456789", RoleID = 1, EmailConfirmationToken = "abc", IsEmailConfirmed = true },
                 new User { UserID = 2, UserName = "customer1", Password = "customer123", FirstName = "John", LastName = "Doe", Email = "john@example.com", PhoneNumber = "987654321", RoleID = 2, EmailConfirmationToken = "abc", IsEmailConfirmed = true },
                 new User { UserID = 3, UserName = "staff1", Password = "staff123", FirstName = "Jane", LastName = "Smith", Email = "jane@example.com", PhoneNumber = "111222333", RoleID = 3, EmailConfirmationToken = "abc", IsEmailConfirmed = true }
             );
@@ -185,94 +185,28 @@ namespace BookingHotel.Models
             // Seed data for RoomAmenities
             modelBuilder.Entity<RoomAmenities>().HasData(
                 new RoomAmenities { AmenityID = 1, AmenityName = "WiFi", Description = "High-speed internet access" },
-                new RoomAmenities { AmenityID = 2, AmenityName = "TV", Description = "Flat-screen television" }
+                new RoomAmenities { AmenityID = 2, AmenityName = "TV", Description = "Flat-screen television" },
+                new RoomAmenities { AmenityID = 3, AmenityName = "Mini Refrigerator", Description = "Mini bar includes free coffee and water" },
+                new RoomAmenities { AmenityID = 4, AmenityName = "Air conditioning", Description = "Air conditioning and refreshment center" },
+                new RoomAmenities { AmenityID = 5, AmenityName = "Lock the door securely", Description = "Coded secure door lock" },
+                new RoomAmenities { AmenityID = 6, AmenityName = "Bathtub", Description = "Comfortable bathtub" }
             );
 
             // Seed data for HotelService
             modelBuilder.Entity<HotelService>().HasData(
-                new HotelService
-                {
-                    ServiceID = 1,
-                    ServiceName = "Spa and Massage",
-                    Description = "Providing massage therapies and spa services to help customers relax and regenerate energy",
-                    ImageUrl = "https://www.serenevillas.com/images/mainpic-spa.jpg",
-                    Price = null,
-                    Rating = "4.00"
-                },
-                new HotelService
-                {
-                    ServiceID = 2,
-                    ServiceName = "Travel support",
-                    Description = "Providing travel information, booking tours, sightseeing tickets, shuttle buses, etc",
-                    ImageUrl = "https://bcp.cdnchinhphu.vn/334894974524682240/2023/10/3/dulich-16963249467831857858889.jpg",
-                    Price = 2000000.00m,
-                    Rating = "5.00"
-                },
-
-                new HotelService
-                {
-                    ServiceID = 3,
-                    ServiceName = "Room service",
-                    Description = "Includes cleaning the room, changing bed sheets, providing drinking water, personal items, and any other requests from the customer",
-                    ImageUrl = "https://www.huongnghiepaau.com/wp-content/uploads/2020/08/room-service-la-gi-1.jpg",
-                    Price = 200000.00m,
-                    Rating = "4.00"
-                },
-                new HotelService
-                {
-                    ServiceID = 4,
-                    ServiceName = "Free WiFi",
-                    Description = "Service that provides wireless internet connection to customers throughout the hotel area",
-                    ImageUrl = "https://www.smartcity.co.nz/wp-content/uploads/2023/04/why-should-we-have-free-public-wi-fi.jpg",
-                    Price = 75000.00m,
-                    Rating = "3.00"
-                },
-                new HotelService
-                {
-                    ServiceID = 5,
-                    ServiceName = "Restaurant service",
-                    Description = "A place that provides food and drinks to customers, including breakfast, lunch, and dinner",
-                    ImageUrl = "https://phongcachmoc.vn/upload/images/tin-tuc/20%20mau%20nha%20hang%20dep/update-07-2022/Sushi-World-Ton-That-Thiep-10.JPG",
-                    Price = 150000.00m,
-                    Rating = "4.50"
-                },
-                new HotelService
-                {
-                    ServiceID = 6,
-                    ServiceName = "Gym and swimming",
-                    Description = "Some hotels provide recreational facilities such as swimming pools and gyms for guests",
-                    ImageUrl = "https://mirefoot.co.uk/wp-content/uploads/2019/05/Mierfoot-Pool-05-resized-850x567.jpg",
-                    Price = 200000.00m,
-                    Rating = "2.50"
-                },
-                new HotelService
-                {
-                    ServiceID = 7,
-                    ServiceName = "Airport pick up",
-                    Description = "Provides shuttle service from the airport to the hotel and vice versa",
-                    ImageUrl = "https://jugnoo.io/wp-content/uploads/2021/05/1-6-1024x543.png",
-                    Price = 1000000.00m,
-                    Rating = "4.00"
-                },
-                new HotelService
-                {
-                    ServiceID = 8,
-                    ServiceName = "Meeting room service",
-                    Description = "Some hotels have conference and wedding rooms to organize events",
-                    ImageUrl = "https://cdn0.weddingwire.com/article/1435/3_2/960/jpg/15341-communicate-with-vendors-rawpixel.jpeg",
-                    Price = 750000.00m,
-                    Rating = "2.50"
-                }
+                new HotelService { ServiceID = 1, ServiceName = "Room Service", Description = "In-room dining service" },
+                new HotelService { ServiceID = 2, ServiceName = "Laundry", Description = "Laundry and dry cleaning service" },
+                new HotelService { ServiceID = 3, ServiceName = "Nefflix", Description = "Nefflix and Chill" }
             );
 
             // Seed data for Room
             modelBuilder.Entity<Room>().HasData(
-                new Room { RoomID = 1, RoomNumber = 101, RoomType = "Standard", StatusID = 1, Rate = 100, ServiceID = 1, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", Price = 35000, Description= "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world." },
-                new Room { RoomID = 2, RoomNumber = 102, RoomType = "Deluxe", StatusID = 1, Rate = 110, ServiceID = 2, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", Price = 30000, Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world." },
-                new Room { RoomID = 3, RoomNumber = 103, RoomType = "VIP", StatusID = 1, Rate = 120, ServiceID = 3, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", Price = 45000, Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world." },
-                new Room { RoomID = 4, RoomNumber = 104, RoomType = "Family", StatusID = 1, Rate = 180, ServiceID = 2, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", Price = 40000, Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world." },
-                new Room { RoomID = 5, RoomNumber = 105, RoomType = "Class", StatusID = 1, Rate = 130, ServiceID = 3, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", Price = 50000, Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world." },
-                new Room { RoomID = 6, RoomNumber = 106, RoomType = "Suite", StatusID = 1, Rate = 150, ServiceID = 1, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", Price = 38000, Description = "The hotel lobby is a sanctuary of sophistication and relaxation, designed to provide a warm welcome to weary travelers and discerning guests alike. As you enter through the glass doors, you're greeted by the soft glow of ambient lighting, casting a gentle radiance upon the polished marble floors below. Plush velvet sofas and armchairs beckon invitingly, offering a comfortable respite for those seeking refuge from the hustle and bustle of the outside world." }
+                new Room { RoomID = 1, RoomNumber = 101, RoomType = "Standard", StatusID = 1, Rate = 100, ServiceID = 1, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", View = "Sea View", DescriptionRoom = "Standard 3-star room has an area of 45m2 and is equipped with 1 large, spacious and comfortable king bed. Guests staying at the hotel will be able to see Hoa Lac city with sea views overlooking 2 main roads. Not only that, with a bathroom full of equipment and services, customers will certainly have a feeling of relaxation and comfort when using it.", Price = 30000 },
+                new Room { RoomID = 2, RoomNumber = 102, RoomType = "Deluxe", StatusID = 1, Rate = 150, ServiceID = 2, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", View = "Mountain View", DescriptionRoom = "3-star standard Deluxe room has an area of 45m2 equipped with 2 single beds (each bed size is 1.4m x 2m) very spacious and comfortable. Guests staying at the hotel will be able to see Hoa Lac city with a mountain view overlooking the majestic mountains. Not only that, with a bathroom full of equipment and services, customers will certainly have a feeling of relaxation and comfort when using it.", Price = 35000 },
+                new Room { RoomID = 3, RoomNumber = 103, RoomType = "Family", StatusID = 1, Rate = 120, ServiceID = 3, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", View = "Mountain View", DescriptionRoom = "3-star standard Family room has an area of 45m2 equipped with 2 single beds (each bed size is 1.4m x 2m) very spacious and comfortable. Guests staying at the hotel will be able to see Hoa Lac city with a mountain view overlooking the majestic mountains. Not only that, with a bathroom full of equipment and services, customers will certainly have a feeling of relaxation and comfort when using it.", Price = 40000 },
+                new Room { RoomID = 4, RoomNumber = 104, RoomType = "Super", StatusID = 1, Rate = 130, ServiceID = 1, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", View = "City View", DescriptionRoom = "Super room meets 3-star standard with an area of 45m2 and a very elegant interior design, bringing a relaxing and gentle feeling when customers stay. The room has a view overlooking the spacious FPT University of Hoa Lac city, with a private balcony, customers will feel the bustle of this beautiful coastal city. The bedroom is equipped with 2 beds (each bed size is 1.2m x 2m) very comfortable. Besides, the spacious bathroom with full amenities helps customers relax and have a wonderful experience.", Price = 45000 },
+                new Room { RoomID = 5, RoomNumber = 105, RoomType = "Suite", StatusID = 1, Rate = 140, ServiceID = 3, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", View = "Sea View", DescriptionRoom = "This is also one of the two most spacious rooms (45m2) as well as the most luxurious in the hotel. The room has 3 beautiful views of Hoa Lac beach with 2 private balconies. The room has 1 bedroom (bed size is 2m x 2.2m) and 2 living areas: the living room and the tea area, suitable for receiving guests very formally and politely. The bathroom has a deep soaking tub that will help customers soak and relax after a tiring day of work.", Price = 50000 },
+                new Room { RoomID = 6, RoomNumber = 106, RoomType = "VIP", StatusID = 1, Rate = 160, ServiceID = 2, ThumnailRoom = "https://media.cnn.com/api/v1/images/stellar/prod/140127103345-peninsula-shanghai-deluxe-mock-up.jpg?q=w_2226,h_1449,x_0,y_0,c_fill", View = "City View", DescriptionRoom = "VIP Suite is one of the two largest rooms (45m2) as well as the most luxurious in the hotel. The room has 3 beautiful views overlooking the main streets of the city with 2 private balconies with great views. The room has 1 bedroom (bed size is 2m x 2.2m) and 2 living areas: the living room and the tea area that can receive guests very elegantly. Not only that, the bathroom has a deep soaking tub, which will help customers soak and relax after a tiring time.", Price = 55000 }
             );
 
             // Seed data for EmployeeSchedule
@@ -291,7 +225,7 @@ namespace BookingHotel.Models
                 new Task { TaskID = 2, RoomID = 2, TaskDescription = "Change beddings", ScheduledTime = DateTime.Now.AddDays(2), TaskStatus = "Pending" }
             );
 
-    
+
         }
 
     }
