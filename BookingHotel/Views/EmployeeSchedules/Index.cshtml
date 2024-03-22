@@ -4,61 +4,46 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Employee Schedules</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Taskname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slot)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShiftStartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShiftEndTime)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Taskname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Slot)
-                </td>
-                <td>
-                    @FormatDateTime(item.ShiftStartTime)
-                </td>
-                <td>
-                    @FormatDateTime(item.ShiftEndTime)
-                </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ScheduleID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ScheduleID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ScheduleID">Delete</a>
-                </td>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Employee</th>
+                <th>Slot</th>
+                <th>Shift Start Time</th>
+                <th>Shift End Time</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Taskname)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Employee.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Slot)</td>
+                    <td>@FormatDateTime(item.ShiftStartTime)</td>
+                    <td>@FormatDateTime(item.ShiftEndTime)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ScheduleID" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.ScheduleID" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.ScheduleID" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-controller="Employee" asp-action="Index">Back to List</a>
+</div>
 @functions {
     public static string FormatDateTime(DateTime? dateTime)
     {
