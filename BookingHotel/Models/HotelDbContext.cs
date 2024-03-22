@@ -190,9 +190,79 @@ namespace BookingHotel.Models
 
             // Seed data for HotelService
             modelBuilder.Entity<HotelService>().HasData(
-                new HotelService { ServiceID = 1, ServiceName = "Room Service", Description = "In-room dining service" },
-                new HotelService { ServiceID = 2, ServiceName = "Laundry", Description = "Laundry and dry cleaning service" },
-                new HotelService { ServiceID = 3, ServiceName = "Nefflix", Description = "Nefflix and Chill" }
+                new HotelService
+                {
+                    ServiceID = 1,
+                    ServiceName = "Spa and Massage",
+                    Description = "Providing massage therapies and spa services to help customers relax and regenerate energy",
+                    ImageUrl = "https://www.serenevillas.com/images/mainpic-spa.jpg",
+                    Price = null,
+                    Rating = "4.00"
+                },
+                new HotelService
+                {
+                    ServiceID = 2,
+                    ServiceName = "Travel support",
+                    Description = "Providing travel information, booking tours, sightseeing tickets, shuttle buses, etc",
+                    ImageUrl = "https://bcp.cdnchinhphu.vn/334894974524682240/2023/10/3/dulich-16963249467831857858889.jpg",
+                    Price = 2000000.00m,
+                    Rating = "5.00"
+                },
+
+                new HotelService
+                {
+                    ServiceID = 3,
+                    ServiceName = "Room service",
+                    Description = "Includes cleaning the room, changing bed sheets, providing drinking water, personal items, and any other requests from the customer",
+                    ImageUrl = "https://www.huongnghiepaau.com/wp-content/uploads/2020/08/room-service-la-gi-1.jpg",
+                    Price = 200000.00m,
+                    Rating = "4.00"
+                },
+                new HotelService
+                {
+                    ServiceID = 4,
+                    ServiceName = "Free WiFi",
+                    Description = "Service that provides wireless internet connection to customers throughout the hotel area",
+                    ImageUrl = "https://www.smartcity.co.nz/wp-content/uploads/2023/04/why-should-we-have-free-public-wi-fi.jpg",
+                    Price = 75000.00m,
+                    Rating = "3.00"
+                },
+                new HotelService
+                {
+                    ServiceID = 5,
+                    ServiceName = "Restaurant service",
+                    Description = "A place that provides food and drinks to customers, including breakfast, lunch, and dinner",
+                    ImageUrl = "https://phongcachmoc.vn/upload/images/tin-tuc/20%20mau%20nha%20hang%20dep/update-07-2022/Sushi-World-Ton-That-Thiep-10.JPG",
+                    Price = 150000.00m,
+                    Rating = "4.50"
+                },
+                new HotelService
+                {
+                    ServiceID = 6,
+                    ServiceName = "Gym and swimming",
+                    Description = "Some hotels provide recreational facilities such as swimming pools and gyms for guests",
+                    ImageUrl = "https://mirefoot.co.uk/wp-content/uploads/2019/05/Mierfoot-Pool-05-resized-850x567.jpg",
+                    Price = 200000.00m,
+                    Rating = "2.50"
+                },
+                new HotelService
+                {
+                    ServiceID = 7,
+                    ServiceName = "Airport pick up",
+                    Description = "Provides shuttle service from the airport to the hotel and vice versa",
+                    ImageUrl = "https://jugnoo.io/wp-content/uploads/2021/05/1-6-1024x543.png",
+                    Price = 1000000.00m,
+                    Rating = "4.00"
+                },
+                new HotelService
+                {
+                    ServiceID = 8,
+                    ServiceName = "Meeting room service",
+                    Description = "Some hotels have conference and wedding rooms to organize events",
+                    ImageUrl = "https://cdn0.weddingwire.com/article/1435/3_2/960/jpg/15341-communicate-with-vendors-rawpixel.jpeg",
+                    Price = 750000.00m,
+                    Rating = "2.50"
+                }
             );
 
             // Seed data for Room
